@@ -1,93 +1,99 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Profile from "../assets/profile.jpg";
+import { Github, Linkedin, Mail } from "lucide-react";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+  },
+};
 
 const Home = () => {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
   return (
-    <div id="home" className="bg-slate-900 min-h-screen text-white flex items-center justify-center">
-      {/* Hero / Profile Section */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <motion.div 
+    <div id="home" className="bg-[#050505] min-h-screen text-white flex items-center justify-center selection:bg-yellow-500/30">
+      <main className="max-w-4xl mx-auto px-6 py-24 text-center">
+        
+        <motion.div
           initial="hidden"
           animate="visible"
-          className="flex flex-col md:flex-row items-center gap-10 md:gap-16 text-center md:text-left"
+          transition={{ staggerChildren: 0.1 }}
+          className="flex flex-col items-center"
         >
-          {/* Profile Image with Decorative Ring */}
-          <motion.div
-            variants={fadeUp}
-            className="relative"
-          >
-            <div className="absolute -inset-1 bg-linear-to-tr from-yellow-400 to-orange-500 rounded-full blur opacity-30"></div>
+          {/* 1. Minimalist Profile Image */}
+          <motion.div variants={fadeUp} className="relative mb-10 group">
+            {/* Soft Glow behind image */}
+            <div className="absolute -inset-2 bg-yellow-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <img 
               src={Profile} 
-              alt="Jhonmark Ordaniza"
-              className="relative h-48 w-48 md:h-64 md:w-64 rounded-full object-cover border-4 border-slate-800 shadow-2xl"
+              alt="Jhonmark"
+              className="relative h-32 w-32 md:h-40 md:w-40 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 border border-white/5"
             />
           </motion.div>
 
-          {/* Profile Text Content */}
-          <div className="flex flex-col items-center md:items-start">
-            <motion.span 
-              variants={fadeUp}
-              className="text-yellow-400 font-mono tracking-widest mb-2"
-            >
-              FULL-STACK DEVELOPER
-            </motion.span>
-            
-            <motion.h2
-              variants={fadeUp}
-              className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
-            >
-              Hi, I’m <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-slate-400">Jhonmark</span>
-            </motion.h2>
-            
-            <motion.p
-              variants={fadeUp}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl mb-8 max-w-xl text-slate-400 leading-relaxed"
-            >
-              I specialize in building high-performance web applications using **React**, **Tailwind**, and **TypeScript**. I love turning complex problems into simple, beautiful, and intuitive designs.
-            </motion.p>
+          {/* 2. Clean Status Label */}
+          <motion.div 
+            variants={fadeUp}
+            className="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/5 bg-white/5 text-[10px] font-bold tracking-[0.2em] text-yellow-500 uppercase"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></span>
+            Open for projects
+          </motion.div>
 
-            {/* Quick Info/Badges */}
-            <motion.div 
-              variants={fadeUp}
-              transition={{ delay: 0.4 }}
-              className="flex flex-wrap justify-center md:justify-start gap-3 mb-8"
-            >
-              {["Philippines", "Freelance", "Open to Work"].map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-medium text-slate-300">
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
+          {/* 3. High-Impact Typography */}
+          <motion.h1 
+            variants={fadeUp}
+            className="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
+          >
+            Jhonmark <span className="text-slate-500 italic font-light">Ordaniza</span>
+          </motion.h1>
 
-            {/* CTA Buttons */}
-            <motion.div 
-              variants={fadeUp}
-              transition={{ delay: 0.5 }}
-              className="flex gap-4"
-            >
-              <a
-                href="#projects"
-                className="bg-yellow-400 text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-500 transition-all shadow-lg hover:shadow-yellow-400/20"
+          {/* 4. Balanced Paragraph */}
+          <motion.p 
+            variants={fadeUp}
+            className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-12 leading-relaxed"
+          >
+            I’m a Full-stack developer crafting high-performance web experiences. 
+            Focused on the <span className="text-white font-medium">VILT ecosystem</span> and human-centric design.
+          </motion.p>
+
+          {/* 5. Minimalist CTA */}
+          <motion.div variants={fadeUp} className="flex flex-col md:flex-row items-center gap-8">        
+            <div className="flex gap-6 text-sm font-medium text-slate-500">
+             <a 
+                href="https://github.com/Jhonyx10" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors group"
               >
-                View Work
+                <Github size={18} className="group-hover:text-yellow-500 transition-colors" />
+                <span>GitHub</span>
               </a>
-              <a
-                href="#contact"
-                className="bg-slate-800 text-white border border-slate-700 px-8 py-3 rounded-full font-bold hover:bg-slate-700 transition-all"
+              <span className="text-white/10">•</span>
+             <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors group"
               >
-                Contact Me
+                <Linkedin size={18} className="group-hover:text-yellow-500 transition-colors" />
+                <span>LinkedIn</span>
               </a>
-            </motion.div>
-          </div>
+              <span className="text-white/10">•</span>
+              <a 
+                href="mailto:your-email@example.com" 
+                className="flex items-center gap-2 hover:text-white transition-colors group"
+              >
+                <Mail size={18} className="group-hover:text-yellow-500 transition-colors" />
+                <span>Email</span>
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
-      </section>
+
+      </main>
     </div>
   );
 };
