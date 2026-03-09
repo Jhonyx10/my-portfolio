@@ -21,7 +21,7 @@ const Home = () => {
             variants={fadeUp}
             className="relative"
           >
-            <div className="absolute -inset-1 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full blur opacity-30"></div>
+            <div className="absolute -inset-1 bg-linear-to-tr from-yellow-400 to-orange-500 rounded-full blur opacity-30"></div>
             <img 
               src={Profile} 
               alt="Jhonmark Ordaniza"
@@ -42,7 +42,7 @@ const Home = () => {
               variants={fadeUp}
               className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
             >
-              Hi, I’m <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Jhonmark</span>
+              Hi, I’m <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-slate-400">Jhonmark</span>
             </motion.h2>
             
             <motion.p
