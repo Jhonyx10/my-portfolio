@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { Github, Database, Layout as LayoutIcon, Activity, ArrowUpRight } from "lucide-react";
+import { Github, Layout as LayoutIcon, Activity, ArrowUpRight } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
