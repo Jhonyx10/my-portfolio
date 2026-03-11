@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", link: "/", icon: <Home size={16} /> },
-    { name: "About", link: isHome ? "#about" : "/#about", icon: <User size={16} /> },
+    { name: "About", link: isHome ? "about" : "/about", icon: <User size={16} /> },
     { name: "Projects", link: "/projects", icon: <Briefcase size={16} /> },
     { name: "Contact", link: isHome ? "#contact" : "/#contact", icon: <Mail size={16} /> },
   ];
@@ -20,8 +20,7 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      // Updated to match the home page bg and border style
-      className="bg-[#050505]/80 backdrop-blur-md border-b border-white/5 fixed top-0 w-full z-[100] h-20 flex items-center"
+      className="bg-[#050505]/80 backdrop-blur-md border-b border-white/5 fixed top-0 w-full z-[100] h-20 flex items-center justify-center"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between w-full relative px-8 md:px-12">
 
